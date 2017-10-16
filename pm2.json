@@ -1,9 +1,9 @@
 {
   "apps": [
     {
-      "name": "activi-server",
+      "name": "cookall-api-server",
       "script": "server/server.js",
-      "port": "8080",
+      "port": "3000",
       "watch": true,
       "ignore_watch": ["./logs", "*.log"],
       "watch_options": {
