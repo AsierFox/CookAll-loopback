@@ -14,29 +14,29 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "cookall-mysql"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "cookall-mysql",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "cookall-mysql",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "cookall-mysql",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "cookall-mysql",
     "public": false
   },
   "Recipe": {
-    "dataSource": "db",
+    "dataSource": "cookall-mysql",
     "public": true
   }
 }
