@@ -1,9 +1,11 @@
 'use strict';
 
-var loopback = require('loopback');
-var boot = require('loopback-boot');
+let loopback = require('loopback');
+let boot = require('loopback-boot');
 
-var app = module.exports = loopback();
+let router = require('./routing/router');
+
+let app = module.exports = loopback();
 
 app.start = function() {
   // start the web server
@@ -23,8 +25,12 @@ app.start = function() {
 boot(app, __dirname, function(err) {
   if (err) throw err;
 
+  app.disable('x-powered-by');
+
+  router(app);
+
   // start the server if `$ node server.js`
   if (require.main === module) {
-    app.start();  
+    app.start();
   }
 });
