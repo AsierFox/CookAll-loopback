@@ -4,12 +4,12 @@
     "connector": "memory"
   },
   "cookall-mysql": {
-    "name": "accountDS",
+    "name": "cookall-mysql",
     "connector": "mysql",
-    "host": "demo.strongloop.com",
+    "host": "127.0.0.1",
     "port": 3306,
-    "database": "loopback-example-mysql",
-    "username": "demo",
-    "password": "L00pBack"
+    "database": "cookall",
+    "username": "root",
+    "password": "root"
   }
 }

@@ -4,12 +4,14 @@ let loopback = require('loopback');
 
 module.exports = function (app) {
 
-  let resetDB = false;
+  let resetDB = true;
 
   if (resetDB) {
 
-    // app.dataSources.activiMysql.automigrate(function () {
+    app.dataSources.cookallMysql.automigrate(function () {
       // Create models
-    // };
+    });
+
+    console.log('Auto migration completed!');
   }
 };
