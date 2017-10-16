@@ -2,5 +2,14 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "cookall-mysql": {
+    "name": "accountDS",
+    "connector": "mysql",
+    "host": "demo.strongloop.com",
+    "port": 3306,
+    "database": "loopback-example-mysql",
+    "username": "demo",
+    "password": "L00pBack"
   }
 }
