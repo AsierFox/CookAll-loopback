@@ -1,0 +1,22 @@
+{
+  "apps": [
+    {
+      "name": "activi-server",
+      "script": "server/server.js",
+      "port": "8080",
+      "watch": true,
+      "ignore_watch": ["./logs", "*.log"],
+      "watch_options": {
+        "usePolling": true
+      },
+      "error_file": "./logs/app-error.log",
+      "out_file": "./logs/app-out.log",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
