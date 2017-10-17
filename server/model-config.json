@@ -74,5 +74,9 @@
   "MadeItPhoto": {
     "dataSource": "cookall-mysql",
     "public": true
+  },
+  "RecipeLike": {
+    "dataSource": "cookall-mysql",
+    "public": false
   }
 }

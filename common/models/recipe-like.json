@@ -1,0 +1,31 @@
+{
+  "name": "RecipeLike",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "createdAt": {
+      "type": "date",
+      "required": true,
+      "dataType": "datetime",
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "profile": {
+      "type": "belongsTo",
+      "model": "Profile",
+      "foreignKey": "profileId"
+    },
+    "recipe": {
+      "type": "belongsTo",
+      "model": "Recipe",
+      "foreignKey": "recipeId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
