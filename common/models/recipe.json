@@ -91,6 +91,11 @@
       "type": "hasMany",
       "model": "RecipePhoto",
       "foreignKey": "recipePhotoId"
+    },
+    "madeIts": {
+      "type": "hasMany",
+      "model": "MadeIt",
+      "foreignKey": "madeItId"
     }
   },
   "acls": [],

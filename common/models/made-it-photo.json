@@ -1,0 +1,26 @@
+{
+  "name": "MadeItPhoto",
+  "plural": "madeItPhotos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "path": {
+      "type": "string",
+      "required": true,
+      "length": 50
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true,
+      "dataType": "datetime",
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

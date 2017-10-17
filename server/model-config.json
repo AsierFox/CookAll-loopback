@@ -66,5 +66,13 @@
   "RecipePhoto": {
     "dataSource": "cookall-mysql",
     "public": true
+  },
+  "MadeIt": {
+    "dataSource": "cookall-mysql",
+    "public": true
+  },
+  "MadeItPhoto": {
+    "dataSource": "cookall-mysql",
+    "public": true
   }
 }

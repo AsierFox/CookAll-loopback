@@ -1,0 +1,25 @@
+{
+  "name": "MadeIt",
+  "plural": "madeIts",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "profile": {
+      "type": "hasOne",
+      "model": "Profile",
+      "foreignKey": "profileId"
+    },
+    "photos": {
+      "type": "hasMany",
+      "model": "MadeItPhoto",
+      "foreignKey": "madeItPhotoId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
