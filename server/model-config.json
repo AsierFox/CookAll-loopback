@@ -78,5 +78,9 @@
   "RecipeLike": {
     "dataSource": "cookall-mysql",
     "public": false
+  },
+  "CookersRanking": {
+    "dataSource": "cookall-mysql",
+    "public": true
   }
 }

@@ -1,0 +1,34 @@
+{
+  "name": "CookersRanking",
+  "plural": "cookersRanking",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "points": {
+      "type": "number",
+      "required": true,
+      "dataType": "int",
+      "length": 5,
+      "default": 0
+    },
+    "date": {
+      "type": "date",
+      "required": true,
+      "dataType": "datetime",
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "profile": {
+      "type": "belongsTo",
+      "model": "Profile",
+      "foreignKey": "profileId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
