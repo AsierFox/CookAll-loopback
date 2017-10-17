@@ -58,5 +58,13 @@
   "RecipeCategory": {
     "dataSource": "cookall-mysql",
     "public": true
+  },
+  "RecipeMainPhoto": {
+    "dataSource": "cookall-mysql",
+    "public": true
+  },
+  "RecipePhoto": {
+    "dataSource": "cookall-mysql",
+    "public": true
   }
 }

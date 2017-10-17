@@ -1,29 +1,16 @@
 {
-  "name": "Profile",
-  "plural": "profiles",
-  "base": "User",
+  "name": "RecipePhoto",
+  "plural": "recipePhotos",
+  "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "name": {
+    "path": {
       "type": "string",
       "required": true,
       "length": 50
-    },
-    "surnames": {
-      "type": "string",
-      "required": true,
-      "length": 100
-    },
-    "gender": {
-      "type": "string",
-      "enum": [
-        "m",
-        "f"
-      ],
-      "length": 1
     },
     "createdAt": {
       "type": "date",

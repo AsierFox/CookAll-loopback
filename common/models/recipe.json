@@ -96,6 +96,22 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "mainPhoto": {
+      "type": "hasOne",
+      "model": "RecipeMainPhoto",
+      "foreignKey": "recipeMainPhotoId",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "photos": {
+      "type": "hasMany",
+      "model": "RecipePhoto",
+      "foreignKey": "recipePhotoId",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],
