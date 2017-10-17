@@ -86,5 +86,9 @@
   "Feedback": {
     "dataSource": "cookall-mysql",
     "public": false
+  },
+  "ProfileFollow": {
+    "dataSource": "cookall-mysql",
+    "public": false
   }
 }
