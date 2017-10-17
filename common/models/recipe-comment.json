@@ -33,10 +33,7 @@
     "profile": {
       "type": "belongsTo",
       "model": "Profile",
-      "foreignKey": "profileId",
-      "options": {
-        "nestRemoting": true
-      }
+      "foreignKey": "profileId"
     }
   },
   "acls": [],

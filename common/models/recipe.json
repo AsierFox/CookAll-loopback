@@ -65,53 +65,32 @@
     "comments": {
       "type": "hasMany",
       "model": "RecipeComment",
-      "foreignKey": "recipe_id",
-      "options": {
-        "nestRemoting": true,
-        "disableInclude": true
-      }
+      "foreignKey": "recipe_id"
     },
     "ingredients": {
       "type": "hasMany",
       "model": "Ingredient",
-      "foreignKey": "recipeId",
-      "options": {
-        "nestRemoting": false,
-        "disableInclude": true
-      }
+      "foreignKey": "recipeId"
     },
     "steps": {
       "type": "hasMany",
       "model": "RecipeStep",
-      "foreignKey": "recipeId",
-      "options": {
-        "nestRemoting": false,
-        "disableInclude": true
-      }
+      "foreignKey": "recipeId"
     },
     "categories": {
       "type": "hasMany",
       "model": "RecipeCategory",
-      "foreignKey": "recipeId",
-      "options": {
-        "nestRemoting": true
-      }
+      "foreignKey": "recipeId"
     },
     "mainPhoto": {
       "type": "hasOne",
       "model": "RecipeMainPhoto",
-      "foreignKey": "recipeMainPhotoId",
-      "options": {
-        "nestRemoting": true
-      }
+      "foreignKey": "recipeMainPhotoId"
     },
     "photos": {
       "type": "hasMany",
       "model": "RecipePhoto",
-      "foreignKey": "recipePhotoId",
-      "options": {
-        "nestRemoting": true
-      }
+      "foreignKey": "recipePhotoId"
     }
   },
   "acls": [],

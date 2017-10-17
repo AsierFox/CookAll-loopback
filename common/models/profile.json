@@ -33,7 +33,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "recipes": {
+      "type": "hasMany",
+      "model": "Recipe",
+      "foreignKey": "userId"
+    }
+  },
   "acls": [],
   "methods": {}
 }
