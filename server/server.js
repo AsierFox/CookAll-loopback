@@ -4,6 +4,7 @@ let loopback = require('loopback');
 let boot = require('loopback-boot');
 
 let router = require('./routing/router');
+let cron = require('./cron/cron');
 
 let app = module.exports = loopback();
 
@@ -28,6 +29,8 @@ boot(app, __dirname, function(err) {
   app.disable('x-powered-by');
 
   router(app);
+
+  cron(app);
 
   // start the server if `$ node server.js`
   if (require.main === module) {

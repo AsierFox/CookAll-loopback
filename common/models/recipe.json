@@ -95,7 +95,7 @@
     "madeIts": {
       "type": "hasMany",
       "model": "MadeIt",
-      "foreignKey": "madeItId"
+      "foreignKey": "recipeId"
     }
   },
   "acls": [],
