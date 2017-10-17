@@ -1,0 +1,35 @@
+{
+  "name": "RecipeComment",
+  "plural": "recipeComments",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "message": {
+      "type": "string",
+      "required": true
+    },
+    "unread": {
+      "type": "boolean",
+      "default": true
+    },
+    "createdAt": {
+      "type": "date",
+      "dataType": "datetime",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "deletedAt": {
+      "type": "date",
+      "dataType": "datetime",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

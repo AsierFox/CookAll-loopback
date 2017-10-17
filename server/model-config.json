@@ -38,5 +38,13 @@
   "Recipe": {
     "dataSource": "cookall-mysql",
     "public": true
+  },
+  "Profile": {
+    "dataSource": "cookall-mysql",
+    "public": true
+  },
+  "RecipeComment": {
+    "dataSource": "cookall-mysql",
+    "public": true
   }
 }

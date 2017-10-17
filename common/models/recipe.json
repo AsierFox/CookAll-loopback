@@ -9,7 +9,43 @@
   "properties": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "length": 150
+    },
+    "cookingTime": {
+      "type": "string",
+      "required": true,
+      "length": 10
+    },
+    "calories": {
+      "type": "number",
+      "dataType": "float",
+      "precision": 4,
+      "scale": 2
+    },
+    "likes": {
+      "type": "number",
+      "dataType": "int",
+      "length": 5,
+      "default": 0
+    },
+    "favorites": {
+      "type": "number",
+      "dataType": "int",
+      "length": 5,
+      "default": 0
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true,
+      "dataType": "datetime",
+      "defaultFn": "now"
+    },
+    "updatedAt": {
+      "type": "date",
+      "required": true,
+      "dataType": "datetime",
+      "defaultFn": "now"
     }
   },
   "validations": [],
