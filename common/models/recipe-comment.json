@@ -17,14 +17,14 @@
     },
     "createdAt": {
       "type": "date",
-      "dataType": "datetime",
       "required": true,
+      "dataType": "datetime",
       "defaultFn": "now"
     },
     "deletedAt": {
       "type": "date",
-      "dataType": "datetime",
       "required": true,
+      "dataType": "datetime",
       "defaultFn": "now"
     }
   },

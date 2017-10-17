@@ -10,6 +10,7 @@
     "title": {
       "type": "string",
       "required": true,
+      "index": true,
       "length": 150
     },
     "cookingTime": {
@@ -25,12 +26,14 @@
     },
     "likes": {
       "type": "number",
+      "required": true,
       "dataType": "int",
       "length": 5,
       "default": 0
     },
     "favorites": {
       "type": "number",
+      "required": true,
       "dataType": "int",
       "length": 5,
       "default": 0
@@ -49,7 +52,17 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "recipeComments": {
+      "type": "hasMany",
+      "model": "RecipeComment",
+      "foreignKey": "recipe_id",
+      "options": {
+        "nestRemoting": true,
+        "disableInclude": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }
