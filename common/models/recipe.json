@@ -53,6 +53,11 @@
       "required": true,
       "dataType": "datetime",
       "defaultFn": "now"
+    },
+    "deletedAt": {
+      "type": "date",
+      "dataType": "datetime",
+      "defaultFn": "now"
     }
   },
   "validations": [],
@@ -69,25 +74,25 @@
     "ingredients": {
       "type": "hasMany",
       "model": "Ingredient",
-      "foreignKey": "recipe_id",
+      "foreignKey": "recipeId",
       "options": {
-        "nestRemoting": true,
+        "nestRemoting": false,
         "disableInclude": true
       }
     },
     "steps": {
       "type": "hasMany",
       "model": "RecipeStep",
-      "foreignKey": "recipe_id",
+      "foreignKey": "recipeId",
       "options": {
-        "nestRemoting": true,
+        "nestRemoting": false,
         "disableInclude": true
       }
     },
     "categories": {
       "type": "hasMany",
       "model": "RecipeCategory",
-      "foreignKey": "",
+      "foreignKey": "recipeId",
       "options": {
         "nestRemoting": true
       }
