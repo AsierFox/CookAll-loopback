@@ -82,5 +82,9 @@
   "CookersRanking": {
     "dataSource": "cookall-mysql",
     "public": true
+  },
+  "Feedback": {
+    "dataSource": "cookall-mysql",
+    "public": false
   }
 }
