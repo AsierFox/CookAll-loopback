@@ -59,6 +59,10 @@
       "dataType": "datetime"
     }
   },
+  "hidden": [
+    "updatedAt",
+    "deletedAt"
+  ],
   "validations": [],
   "relations": {
     "comments": {

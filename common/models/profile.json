@@ -30,8 +30,17 @@
       "required": true,
       "dataType": "datetime",
       "defaultFn": "now"
+    },
+    "deletedAt": {
+      "type": "date",
+      "required": true,
+      "dataType": "datetime"
     }
   },
+  "hidden": [
+    "createdAt",
+    "deletedAt"
+  ],
   "validations": [],
   "relations": {
     "recipes": {

@@ -14,7 +14,8 @@
     ]
   },
   "User": {
-    "dataSource": "cookall-mysql"
+    "dataSource": "cookall-mysql",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "cookall-mysql",
@@ -41,7 +42,18 @@
   },
   "Profile": {
     "dataSource": "cookall-mysql",
-    "public": true
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true,
+          "findById": true,
+          "login": true,
+          "logout": true
+        }
+      }
+    }
   },
   "RecipeComment": {
     "dataSource": "cookall-mysql",
