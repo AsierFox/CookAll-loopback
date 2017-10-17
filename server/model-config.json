@@ -46,5 +46,9 @@
   "RecipeComment": {
     "dataSource": "cookall-mysql",
     "public": true
+  },
+  "Ingredient": {
+    "dataSource": "cookall-mysql",
+    "public": true
   }
 }

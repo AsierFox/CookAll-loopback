@@ -1,0 +1,25 @@
+{
+  "name": "Ingredient",
+  "plural": "ingredients",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "quantity": {
+      "type": "string",
+      "required": true,
+      "length": 50
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "length": 150
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

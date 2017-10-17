@@ -53,9 +53,18 @@
   },
   "validations": [],
   "relations": {
-    "recipeComments": {
+    "comments": {
       "type": "hasMany",
       "model": "RecipeComment",
+      "foreignKey": "recipe_id",
+      "options": {
+        "nestRemoting": true,
+        "disableInclude": true
+      }
+    },
+    "ingredients": {
+      "type": "hasMany",
+      "model": "Ingredient",
       "foreignKey": "recipe_id",
       "options": {
         "nestRemoting": true,
