@@ -90,5 +90,17 @@
   "ProfileFollow": {
     "dataSource": "cookall-mysql",
     "public": false
+  },
+  "Chat": {
+    "dataSource": "cookall-mysql",
+    "public": false
+  },
+  "ChatClient": {
+    "dataSource": "cookall-mysql",
+    "public": false
+  },
+  "ChatMessage": {
+    "dataSource": "cookall-mysql",
+    "public": false
   }
 }

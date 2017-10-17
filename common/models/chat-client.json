@@ -1,0 +1,19 @@
+{
+  "name": "ChatClient",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "chat": {
+      "type": "belongsTo",
+      "model": "Chat",
+      "foreignKey": "chatId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
