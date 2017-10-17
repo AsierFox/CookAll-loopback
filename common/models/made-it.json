@@ -10,7 +10,6 @@
     "title": {
       "type": "string",
       "required": true,
-      "index": true,
       "length": 150
     }
   },
@@ -22,7 +21,7 @@
       "foreignKey": "profileId"
     },
     "photos": {
-      "type": "hasOne",
+      "type": "hasMany",
       "model": "MadeItPhoto",
       "foreignKey": "madeItId"
     }
