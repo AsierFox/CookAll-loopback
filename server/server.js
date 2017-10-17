@@ -3,6 +3,8 @@
 let loopback = require('loopback');
 let boot = require('loopback-boot');
 
+let bodyParser = require('body-parser');
+
 let router = require('./routing/router');
 let cron = require('./cron/cron');
 
@@ -27,6 +29,11 @@ boot(app, __dirname, function(err) {
   if (err) throw err;
 
   app.disable('x-powered-by');
+
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({
+    extended: false,
+  }));
 
   router(app);
 
