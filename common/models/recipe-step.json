@@ -1,0 +1,25 @@
+{
+  "name": "RecipeStep",
+  "plural": "recipeSteps",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "order": {
+      "type": "number",
+      "dataType": "int",
+      "required": true,
+      "length": 2
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

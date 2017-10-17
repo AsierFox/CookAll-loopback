@@ -50,5 +50,9 @@
   "Ingredient": {
     "dataSource": "cookall-mysql",
     "public": true
+  },
+  "RecipeStep": {
+    "dataSource": "cookall-mysql",
+    "public": true
   }
 }
