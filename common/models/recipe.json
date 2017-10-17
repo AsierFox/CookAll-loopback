@@ -56,8 +56,7 @@
     },
     "deletedAt": {
       "type": "date",
-      "dataType": "datetime",
-      "defaultFn": "now"
+      "dataType": "datetime"
     }
   },
   "validations": [],

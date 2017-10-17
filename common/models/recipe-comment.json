@@ -24,8 +24,7 @@
     "deletedAt": {
       "type": "date",
       "required": true,
-      "dataType": "datetime",
-      "defaultFn": "now"
+      "dataType": "datetime"
     }
   },
   "validations": [],
