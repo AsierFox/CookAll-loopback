@@ -2,7 +2,7 @@
 
 module.exports = function (app) {
 
-  let User = app.models.User;
+  let Profile = app.models.Profile;
 
   app.route('/auth/login')
     .post(function (req, res) {
@@ -18,20 +18,18 @@ module.exports = function (app) {
         });
       }
 
-      User.login({
+      Profile.login({
         email: email,
         password: password
       }, function (err, response) {
         if (err) {
-
-          console.log("MEW", err);
-
           return res.send({
             code: 401,
             status: 'Unauthorized',
             error: 'Bad credentials.'
           });
         }
+
         return res.send({
           code: 200,
           status: 'OK',
