@@ -1,21 +1,17 @@
 {
-  "name": "RecipeStep",
-  "plural": "recipeSteps",
+  "name": "RecipeCategory",
+  "plural": "recipeCategories",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "order": {
-      "type": "number",
-      "required": true,
-      "dataType": "int",
-      "length": 2
-    },
-    "description": {
+    "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "index": true,
+      "length": 50
     }
   },
   "validations": [],

@@ -30,15 +30,15 @@
     },
     "likes": {
       "type": "number",
-      "dataType": "int",
       "required": true,
+      "dataType": "int",
       "length": 5,
       "default": 0
     },
     "favorites": {
       "type": "number",
-      "dataType": "int",
       "required": true,
+      "dataType": "int",
       "length": 5,
       "default": 0
     },
@@ -82,6 +82,14 @@
       "options": {
         "nestRemoting": true,
         "disableInclude": true
+      }
+    },
+    "categories": {
+      "type": "hasMany",
+      "model": "RecipeCategory",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
       }
     }
   },
