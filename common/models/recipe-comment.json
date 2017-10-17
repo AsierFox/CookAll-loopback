@@ -23,7 +23,6 @@
     },
     "deletedAt": {
       "type": "date",
-      "required": true,
       "dataType": "datetime"
     }
   },

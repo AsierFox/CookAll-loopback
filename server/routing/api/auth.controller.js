@@ -23,6 +23,9 @@ module.exports = function (app) {
         password: password
       }, function (err, response) {
         if (err) {
+
+          console.log("MEW", err);
+
           return res.send({
             code: 401,
             status: 'Unauthorized',

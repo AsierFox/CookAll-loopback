@@ -3,6 +3,9 @@
 let loopback = require('loopback');
 let boot = require('loopback-boot');
 
+// TODO Review this!
+require('events').EventEmitter.defaultMaxListeners = 30;
+
 let bodyParser = require('body-parser');
 
 let router = require('./routing/router');

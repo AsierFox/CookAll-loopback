@@ -1,7 +1,8 @@
 'use strict';
 
-let loopback = require('loopback');
 let asyncSeries = require('async/series');
+
+let errorHandlerService = require('./../services/errorHandler.service');
 
 module.exports = function (app) {
 
@@ -28,7 +29,10 @@ module.exports = function (app) {
               name: 'Asier',
               surnames: 'González López',
               gender: 'm'
-            }, cb);
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
           },
           function (cb) {
             Profile.create({ // User id, 2
@@ -38,7 +42,10 @@ module.exports = function (app) {
               name: 'Jasone',
               surnames: 'Arranz Martinez',
               gender: 'f'
-            }, cb);
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
           },
           function (cb) {
             Recipe.create({
@@ -47,7 +54,10 @@ module.exports = function (app) {
               cookingTime: '1 h 20 m',
               calories: 122,
               userId: 1
-            }, cb);
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
           },
           function (cb) {
             Recipe.create({
@@ -56,29 +66,44 @@ module.exports = function (app) {
               cookingTime: '30 m',
               calories: 964,
               userId: 2
-            }, cb);
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
           },
           function (cb) {
             RecipeCategory.create({
               name: 'Sweet desserts',
               recipeId: 1
-            }, cb);
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
           },
           function (cb) {
             RecipeCategory.create({
               name: 'Italian',
               recipeId: 2
-            }, cb);
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
           },
           function (cb) {
             RecipeMainPhoto.create({
               recipeId: 1
-            }, cb);
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
           },
           function (cb) {
             RecipeMainPhoto.create({
               recipeId: 2
-            }, cb);
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
           }
         ],
         function () {
