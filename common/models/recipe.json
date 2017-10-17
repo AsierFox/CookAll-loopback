@@ -25,7 +25,7 @@
     "calories": {
       "type": "number",
       "dataType": "float",
-      "precision": 4,
+      "precision": 6,
       "scale": 2
     },
     "likes": {
@@ -85,12 +85,12 @@
     "mainPhoto": {
       "type": "hasOne",
       "model": "RecipeMainPhoto",
-      "foreignKey": "recipeMainPhotoId"
+      "foreignKey": "recipeId"
     },
     "photos": {
       "type": "hasMany",
       "model": "RecipePhoto",
-      "foreignKey": "recipePhotoId"
+      "foreignKey": "recipeId"
     },
     "madeIts": {
       "type": "hasMany",
