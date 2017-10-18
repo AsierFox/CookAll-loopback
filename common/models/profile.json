@@ -25,6 +25,10 @@
       ],
       "length": 1
     },
+    "avatar": {
+      "type": "string",
+      "length": 80
+    },
     "createdAt": {
       "type": "date",
       "required": true,
