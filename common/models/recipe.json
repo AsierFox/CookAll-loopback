@@ -68,7 +68,7 @@
     "comments": {
       "type": "hasMany",
       "model": "RecipeComment",
-      "foreignKey": "recipe_id"
+      "foreignKey": "recipeId"
     },
     "ingredients": {
       "type": "hasMany",

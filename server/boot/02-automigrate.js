@@ -13,6 +13,8 @@ module.exports = function (app) {
   let Recipe = app.models.Recipe;
   let RecipeCategory = app.models.RecipeCategory;
   let RecipeMainPhoto = app.models.RecipeMainPhoto;
+  let ProfileFollow = app.models.ProfileFollow;
+  let RecipeComment = app.models.RecipeComment;
 
   if (resetDB) {
 
@@ -41,6 +43,19 @@ module.exports = function (app) {
               username: 'Jasone',
               name: 'Jasone',
               surnames: 'Arranz Martinez',
+              gender: 'f'
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          function (cb) {
+            Profile.create({ // User id, 3
+              email: 'c@c.c',
+              password: 'c',
+              username: 'Eneritz',
+              name: 'Eneritz',
+              surnames: 'Leafhollow Dannay',
               gender: 'f'
             }, function (err) {
               errorHandlerService.printError(err);
@@ -104,6 +119,22 @@ module.exports = function (app) {
               errorHandlerService.printError(err);
               cb();
             });
+          },
+          function (cb) {
+            ProfileFollow.create({
+              profileFollowerId: 1,
+              profileFollowedId: 3
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          function (cb) {
+            RecipeComment.create({
+              message: 'This is so tasty :P',
+              profileId: 2,
+              recipeId: 1
+            }, cb);
           }
         ],
         function () {
