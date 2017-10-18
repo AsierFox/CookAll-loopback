@@ -13,7 +13,7 @@
       "dataType": "int",
       "length": 2
     },
-    "description": {
+    "step": {
       "type": "string",
       "required": true
     }

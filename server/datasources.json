@@ -8,7 +8,7 @@
     "port": 3306,
     "database": "cookall",
     "username": "root",
-    "password": "root",
+    "password": "",
     "name": "cookall-mysql",
     "connector": "mysql"
   }

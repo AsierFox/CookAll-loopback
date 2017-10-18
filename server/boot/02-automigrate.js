@@ -15,6 +15,7 @@ module.exports = function (app) {
   let RecipeMainPhoto = app.models.RecipeMainPhoto;
   let ProfileFollow = app.models.ProfileFollow;
   let RecipeComment = app.models.RecipeComment;
+  let RecipeStep = app.models.RecipeStep;
 
   if (resetDB) {
 
@@ -134,7 +135,30 @@ module.exports = function (app) {
               message: 'This is so tasty :P',
               profileId: 2,
               recipeId: 1
-            }, cb);
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          function (cb) {
+            RecipeStep.create({
+              order: 1,
+              step: 'Preheat oven to 425 degrees F (220 degrees C).',
+              recipeId: 1
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          function (cb) {
+            RecipeStep.create({
+              order: 2,
+              step: 'Melt butter in a large skillet over medium heat. Cook and stir onion, flour, salt, and pepper in melted butter until the onion is translucent, about 5 minutes.',
+              recipeId: 1
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
           }
         ],
         function () {
