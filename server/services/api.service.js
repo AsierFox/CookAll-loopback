@@ -2,6 +2,7 @@
 
 module.exports = {
   getSuccess: getSuccess,
+  getBadParameters: getBadParameters,
   getLoginError: getLoginError
 };
 
@@ -10,6 +11,13 @@ function getSuccess(data) {
     code: 200,
     status: 'OK',
     data: data
+  };
+}
+
+function getBadParameters() {
+  return {
+    code: 400,
+    status: 'Bad Request'
   };
 }
 

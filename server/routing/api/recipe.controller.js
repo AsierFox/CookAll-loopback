@@ -46,4 +46,14 @@ module.exports = function (app) {
       });
     });
 
+    app.route('/recipes/:recipeId')
+      /**
+       * Get recipe detal.
+       */
+      .get(function (req, res) {
+        let recipeId = req.params.recipeId;
+
+        res.send(apiService.getSuccess(recipeId));
+      });
+
 };
