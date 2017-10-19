@@ -1,0 +1,42 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CookAll",
+		"_postman_id": "f54664ea-2010-bbce-6d19-ed6adfa1ce89",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/auth/login",
+			"request": {
+				"url": "http://localhost:3000/auth/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"a@a.a\",\n\t\"password\": \"a\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/recipes",
+			"request": {
+				"url": "http://localhost:3000/recipes",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
