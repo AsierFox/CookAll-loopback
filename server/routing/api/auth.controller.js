@@ -1,5 +1,7 @@
 'use strict';
 
+let apiService = require('./../../services/api.service');
+
 module.exports = function (app) {
 
   let Profile = app.models.Profile;
@@ -11,30 +13,20 @@ module.exports = function (app) {
       let password = req.body.password;
 
       if (!email || !password) {
-        return res.send({
-          code: 401,
-          status: 'Unauthorized',
-          error: 'Bad credentials.'
-        });
+        return res.send(apiService.getLoginError());
       }
 
       Profile.login({
         email: email,
         password: password
-      }, function (err, response) {
+      }, function (err, userAuth) {
         if (err) {
-          return res.send({
-            code: 401,
-            status: 'Unauthorized',
-            error: 'Bad credentials.'
-          });
+          return res.send(apiService.getLoginError());
         }
 
-        return res.send({
-          code: 200,
-          status: 'OK',
-          data: response
-        });
+        let response = apiService.getSuccess(userAuth);
+
+        return res.send(response);
       });
     });
 

@@ -1,6 +1,7 @@
 'use strict';
 
 let authController = require('./api/auth.controller');
+let recipeController = require('./api/recipe.controller');
 
 /**
  * Groups all route controllers of the app.
@@ -17,5 +18,6 @@ module.exports = function (app) {
   });
 
   authController(app);
+  recipeController(app);
 
 };
