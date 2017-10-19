@@ -6,6 +6,11 @@
   "options": {
     "validateUpsert": true
   },
+  "hidden": [
+    "emailVerified",
+    "createdAt",
+    "deletedAt"
+  ],
   "properties": {
     "name": {
       "type": "string",
@@ -40,16 +45,12 @@
       "dataType": "datetime"
     }
   },
-  "hidden": [
-    "createdAt",
-    "deletedAt"
-  ],
   "validations": [],
   "relations": {
     "recipes": {
       "type": "hasMany",
       "model": "Recipe",
-      "foreignKey": "userId"
+      "foreignKey": "profileId"
     }
   },
   "acls": [],

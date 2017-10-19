@@ -6,6 +6,10 @@
   "options": {
     "validateUpsert": true
   },
+  "hidden": [
+    "updatedAt",
+    "deletedAt"
+  ],
   "properties": {
     "title": {
       "type": "string",
@@ -59,10 +63,6 @@
       "dataType": "datetime"
     }
   },
-  "hidden": [
-    "updatedAt",
-    "deletedAt"
-  ],
   "validations": [],
   "relations": {
     "comments": {
@@ -99,6 +99,11 @@
       "type": "hasMany",
       "model": "MadeIt",
       "foreignKey": "recipeId"
+    },
+    "profile": {
+      "type": "belongsTo",
+      "model": "Profile",
+      "foreignKey": "profileId"
     }
   },
   "acls": [],

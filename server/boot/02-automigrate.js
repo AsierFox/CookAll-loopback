@@ -16,6 +16,7 @@ module.exports = function (app) {
   let ProfileFollow = app.models.ProfileFollow;
   let RecipeComment = app.models.RecipeComment;
   let RecipeStep = app.models.RecipeStep;
+  let RecipeLike = app.models.RecipeLike;
 
   if (resetDB) {
 
@@ -24,6 +25,9 @@ module.exports = function (app) {
       if (seedDB) {
         // Create models
         asyncSeries([
+          /**
+           * Profile
+           */
           function (cb) {
             Profile.create({ // User id, 1
               email: 'a@a.a',
@@ -63,13 +67,17 @@ module.exports = function (app) {
               cb();
             });
           },
+          /**
+           * Recipe
+           */
           function (cb) {
             Recipe.create({
               title: 'Iced Pumpkin Cookies',
               description: 'Wonderful spicy iced pumpkin cookies that both kids and adults love!',
               cookingTime: '1 h 20 m',
               calories: 122,
-              userId: 1
+              likes: 3,
+              profileId: 3
             }, function (err) {
               errorHandlerService.printError(err);
               cb();
@@ -81,7 +89,20 @@ module.exports = function (app) {
               description: 'This is a recipe that I created by modifying my mother\'s recipe. My boyfriend is a fettuccine Alfredo connoisseur and he scrapes the pan every time! I get nothing but rave reviews when I make this dish. I must warn you, this recipe is not for the health conscious. Enjoy!',
               cookingTime: '30 m',
               calories: 964,
-              userId: 2
+              likes: 1,
+              profileId: 2
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          /**
+           * RecipeCategory
+           */
+          function (cb) {
+            RecipeCategory.create({
+              name: 'Sweet desserts',
+              recipeId: 1
             }, function (err) {
               errorHandlerService.printError(err);
               cb();
@@ -89,7 +110,7 @@ module.exports = function (app) {
           },
           function (cb) {
             RecipeCategory.create({
-              name: 'Sweet desserts',
+              name: 'Dessert',
               recipeId: 1
             }, function (err) {
               errorHandlerService.printError(err);
@@ -105,6 +126,9 @@ module.exports = function (app) {
               cb();
             });
           },
+          /**
+           * RecipeMainPhoto
+           */
           function (cb) {
             RecipeMainPhoto.create({
               recipeId: 1
@@ -121,6 +145,9 @@ module.exports = function (app) {
               cb();
             });
           },
+          /**
+           * ProfileFollow
+           */
           function (cb) {
             ProfileFollow.create({
               profileFollowerId: 1,
@@ -130,6 +157,9 @@ module.exports = function (app) {
               cb();
             });
           },
+          /**
+           * RecipeComment
+           */
           function (cb) {
             RecipeComment.create({
               message: 'This is so tasty :P',
@@ -140,6 +170,9 @@ module.exports = function (app) {
               cb();
             });
           },
+          /**
+           * RecipeStep
+           */
           function (cb) {
             RecipeStep.create({
               order: 1,
@@ -154,6 +187,45 @@ module.exports = function (app) {
             RecipeStep.create({
               order: 2,
               step: 'Melt butter in a large skillet over medium heat. Cook and stir onion, flour, salt, and pepper in melted butter until the onion is translucent, about 5 minutes.',
+              recipeId: 1
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          /**
+           * RecipeLike
+           */
+          function (cb) {
+            RecipeLike.create({
+              profileId: 1,
+              recipeId: 1
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          function (cb) {
+            RecipeLike.create({
+              profileId: 1,
+              recipeId: 2
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          function (cb) {
+            RecipeLike.create({
+              profileId: 2,
+              recipeId: 1
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          function (cb) {
+            RecipeLike.create({
+              profileId: 3,
               recipeId: 1
             }, function (err) {
               errorHandlerService.printError(err);

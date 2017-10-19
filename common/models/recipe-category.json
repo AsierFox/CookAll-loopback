@@ -12,6 +12,12 @@
       "required": true,
       "index": true,
       "length": 50
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true,
+      "dataType": "datetime",
+      "defaultFn": "now"
     }
   },
   "validations": [],
