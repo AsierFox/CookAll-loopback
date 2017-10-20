@@ -35,6 +35,9 @@ module.exports = function (app) {
                 avatar: true
               }
             }
+          },
+          {
+            relation: 'mainPhoto'
           }
         ],
         order: 'createdAt ASC'
@@ -53,7 +56,44 @@ module.exports = function (app) {
       .get(function (req, res) {
         let recipeId = req.params.recipeId;
 
-        Recipe.findById(recipeId, function (err, recipe) {
+        Recipe.findById(recipeId,
+          {
+            where: {
+              deletedAt: null
+            },
+            include: [
+              {
+                relation: 'categories',
+                scope: {
+                  fields: {
+                    name: true
+                  }
+                }
+              },
+              {
+                relation: 'profile',
+                scope: {
+                  fields: {
+                    username: true,
+                    avatar: true
+                  }
+                }
+              },
+              {
+                relation: 'mainPhoto'
+              },
+              {
+                relation: 'steps'
+              },
+              {
+                relation: 'photos'
+              },
+              {
+                relation: 'comments'
+              }
+            ]
+          },
+          function (err, recipe) {
 
           if (!recipe) {
             return res.send(apiService.resourceNotFound());
