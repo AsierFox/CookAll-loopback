@@ -1,12 +1,13 @@
 'use strict';
 
 module.exports = {
-  getSuccess: getSuccess,
-  getBadParameters: getBadParameters,
-  getLoginError: getLoginError
+  success: success,
+  malformedParameters: malformedParameters,
+  resourceNotFound: resourceNotFound,
+  loginError: loginError
 };
 
-function getSuccess(data) {
+function success(data) {
   return {
     code: 200,
     status: 'OK',
@@ -14,17 +15,24 @@ function getSuccess(data) {
   };
 }
 
-function getBadParameters() {
+function malformedParameters() {
   return {
     code: 400,
     status: 'Bad Request'
   };
 }
 
-function getLoginError() {
+function resourceNotFound() {
+  return {
+    code: 404,
+    status: 'Resource not found'
+  };
+}
+
+function loginError() {
   return {
     code: 401,
     status: 'Unauthorized',
-    error: 'Bad credentials.'
+    error: 'Bad credentials'
   };
 }

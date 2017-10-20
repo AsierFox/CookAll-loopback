@@ -13,7 +13,7 @@ module.exports = function (app) {
       let password = req.body.password;
 
       if (!email || !password) {
-        return res.send(apiService.getLoginError());
+        return res.send(apiService.loginError());
       }
 
       Profile.login({
@@ -21,12 +21,12 @@ module.exports = function (app) {
         password: password
       }, function (err, userAuth) {
         if (err) {
-          return res.send(apiService.getLoginError());
+          return res.send(apiService.loginError());
         }
 
-        let response = apiService.getSuccess(userAuth);
+        let response = apiService.loginError(userAuth);
 
-        return res.send(response);
+        return res.send(apiService.success(response));
       });
     });
 
