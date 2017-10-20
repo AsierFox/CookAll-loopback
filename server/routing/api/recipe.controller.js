@@ -40,9 +40,9 @@ module.exports = function (app) {
         order: 'createdAt ASC'
       }, function (err, recipes) {
 
-        let response = apiService.getSuccess(recipes);
+        // TODO Call errorHandler to avoid if here
 
-        res.send(response);
+        res.send(apiService.success(recipes));
       });
     });
 
@@ -53,7 +53,14 @@ module.exports = function (app) {
       .get(function (req, res) {
         let recipeId = req.params.recipeId;
 
-        res.send(apiService.getSuccess(recipeId));
+        Recipe.findById(recipeId, function (err, recipe) {
+
+          if (!recipe) {
+            return res.send(apiService.resourceNotFound());
+          }
+
+          res.send(apiService.success(recipe));
+        });
       });
 
 };
