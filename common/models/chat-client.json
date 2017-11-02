@@ -12,6 +12,11 @@
       "type": "belongsTo",
       "model": "Chat",
       "foreignKey": "chatId"
+    },
+    "profile": {
+      "type": "belongsTo",
+      "model": "Profile",
+      "foreignKey": "profileId"
     }
   },
   "acls": [],
