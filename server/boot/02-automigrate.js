@@ -17,6 +17,7 @@ module.exports = function (app) {
   let RecipeComment = app.models.RecipeComment;
   let RecipeStep = app.models.RecipeStep;
   let RecipeLike = app.models.RecipeLike;
+  let Ingredient = app.models.Ingredient;
 
   if (resetDB) {
 
@@ -227,6 +228,50 @@ module.exports = function (app) {
             RecipeLike.create({
               profileId: 3,
               recipeId: 1
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          /**
+           * Ingredient
+           */
+          function (cb) {
+            Ingredient.create({
+              quantity: '2 tablespoons',
+              name: 'vegetable oil',
+              recipeId: 1
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          function (cb) {
+            Ingredient.create({
+              quantity: '1/4 cup',
+              name: 'salsa',
+              recipeId: 1
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          function (cb) {
+            Ingredient.create({
+              quantity: '1',
+              name: 'egg',
+              optional: true,
+              recipeId: 1
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          function (cb) {
+            Ingredient.create({
+              quantity: '1/2 cup diced',
+              name: 'onion',
+              recipeId: 2
             }, function (err) {
               errorHandlerService.printError(err);
               cb();

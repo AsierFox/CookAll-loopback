@@ -16,6 +16,10 @@
       "type": "string",
       "required": true,
       "length": 150
+    },
+    "optional": {
+      "type": "boolean",
+      "default": false
     }
   },
   "validations": [],

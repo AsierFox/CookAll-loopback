@@ -2,6 +2,8 @@
 
 let apiService = require('./../../services/api.service');
 
+const { check, validationResult } = require('express-validator/check');
+
 module.exports = function (app) {
 
   let Recipe = app.models.Recipe;
@@ -36,9 +38,7 @@ module.exports = function (app) {
               }
             }
           },
-          {
-            relation: 'mainPhoto'
-          }
+          { relation: 'mainPhoto' }
         ],
         order: 'createdAt ASC'
       }, function (err, recipes) {
@@ -47,6 +47,23 @@ module.exports = function (app) {
 
         res.send(apiService.success(recipes));
       });
+    })
+    /**
+     * Post a new recipe.
+     */
+    .post([
+      check('title', 'The title can not be empty.')
+        .exists()
+        .trim()
+    ], function (req, res) {
+
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.send(apiService.inappropriateData(errors.mapped()));
+      }
+
+      res.send({type: 'ok'});
     });
 
     app.route('/recipes/:recipeId')
@@ -79,18 +96,11 @@ module.exports = function (app) {
                   }
                 }
               },
-              {
-                relation: 'mainPhoto'
-              },
-              {
-                relation: 'steps'
-              },
-              {
-                relation: 'photos'
-              },
-              {
-                relation: 'comments'
-              }
+              { relation: 'mainPhoto' },
+              { relation: 'ingredients' },
+              { relation: 'steps' },
+              { relation: 'photos' },
+              { relation: 'comments' }
             ]
           },
           function (err, recipe) {
