@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "cookall-mysql": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "cookall",
+    "username": "root",
+    "password": "root",
+    "name": "cookall-mysql",
+    "connector": "mysql"
+  }
+}
