@@ -1,8 +1,8 @@
 'use strict';
 
-let apiService = require('./../../services/api.service');
-
 const { check, validationResult } = require('express-validator/check');
+
+let apiService = require('./../../services/api.service');
 
 module.exports = function (app) {
 

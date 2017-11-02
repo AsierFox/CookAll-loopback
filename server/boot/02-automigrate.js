@@ -18,6 +18,7 @@ module.exports = function (app) {
   let RecipeStep = app.models.RecipeStep;
   let RecipeLike = app.models.RecipeLike;
   let Ingredient = app.models.Ingredient;
+  let Feedback = app.models.Feedback;
 
   if (resetDB) {
 
@@ -272,6 +273,16 @@ module.exports = function (app) {
               quantity: '1/2 cup diced',
               name: 'onion',
               recipeId: 2
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
+          function (cb) {
+            Feedback.create({
+              subject: 'Great app',
+              description: 'This is an awesome great cooking application :D',
+              profileId: 1
             }, function (err) {
               errorHandlerService.printError(err);
               cb();
