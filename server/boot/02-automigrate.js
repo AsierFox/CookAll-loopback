@@ -278,6 +278,9 @@ module.exports = function (app) {
               cb();
             });
           },
+          /**
+           * Feedback
+           */
           function (cb) {
             Feedback.create({
               subject: 'Great app',
@@ -287,7 +290,17 @@ module.exports = function (app) {
               errorHandlerService.printError(err);
               cb();
             });
-          }
+          },
+          function (cb) {
+            Feedback.create({
+              subject: 'Suggestion',
+              description: 'You can show scored points on the profile detail',
+              profileId: 1
+            }, function (err) {
+              errorHandlerService.printError(err);
+              cb();
+            });
+          },
         ],
         function () {
           console.log('All models seeded!');
