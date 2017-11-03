@@ -8,6 +8,7 @@ const apiService = require('./../../services/api.service');
 module.exports = function (app) {
 
   let Recipe = app.models.Recipe;
+  let RecipeLike = app.models.RecipeLike;
 
   app.route('/recipes')
     /**
@@ -113,5 +114,39 @@ module.exports = function (app) {
           res.send(apiService.success(recipe));
         });
       });
+
+  app.post('/recipes/:recipeId/like', [
+      check('recipeId')
+        .exists()
+        .matches(/^\d+$/) // A Number
+        .toInt()
+    ], function (req, res) {
+
+      console.log(req.accessToken);
+      
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.send(apiService.inappropriateData(errors.mapped()));
+      }
+      
+      const recipeId = req.params.recipeId;
+
+      RecipeLike.findOne({
+        where: {
+          recipeId: 'John',
+          profileId: 1
+        }
+      });
+
+      RecipeLike.create({
+        profileId: 1,
+        recipeId: recipeId
+      }, function (err) {
+        /**/
+      });
+
+      res.send('MEW');
+    });
 
 };

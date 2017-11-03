@@ -34,6 +34,15 @@ boot(app, __dirname, function(err) {
 
   app.disable('x-powered-by');
 
+  app.use(loopback.token({  
+    model: app.models.accessToken,
+    currentUserLiteral: 'me',
+    searchDefaultTokenKeys: false,
+    cookies: ['access_token'],
+    headers: ['access_token', 'X-Access-Token'],
+    params: ['access_token']
+  }));
+
   // Conf body parser
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
