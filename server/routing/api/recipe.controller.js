@@ -125,8 +125,8 @@ module.exports = function (app) {
         .toInt()
     ], function (req, res) {
 
-      console.log(req.accessToken);
-      
+      // TODO add middleware for user
+
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
@@ -153,7 +153,7 @@ module.exports = function (app) {
           }, function (err) {
             errorHandlerService.controlException(res, err);
 
-            return res.status(200).json(apiHeaderService.success())
+            return res.status(200).json(apiHeaderService.success());
           });
         }
       });

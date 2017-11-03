@@ -14,7 +14,7 @@ module.exports = function (app) {
       let password = req.body.password;
 
       if (!email || !password) {
-        return res.send(apiService.loginError());
+        return res.send(apiHeaderService.authError());
       }
 
       Profile.login({
@@ -22,10 +22,10 @@ module.exports = function (app) {
         password: password
       }, function (err, userAuth) {
         if (err) {
-          return res.send(apiService.loginError());
+          return res.send(apiHeaderService.authError());
         }
 
-        return res.send(apiService.success(userAuth));
+        return res.send(apiHeaderService.success(userAuth));
       });
     });
 
