@@ -3,7 +3,8 @@
 const { check, validationResult } = require('express-validator/check');
 
 const authMiddleware = require('./../../middlewares/auth.middleware');
-const apiService = require('./../../services/api.service');
+const apiHeaderService = require('./../../services/apiHeader.service');
+const errorHandlerService = require('./../../services/errorHandler.service');
 
 module.exports = function (app) {
 
@@ -44,10 +45,11 @@ module.exports = function (app) {
         ],
         order: 'createdAt ASC'
       }, function (err, recipes) {
+        errorHandlerService.controlException(res, err);
 
         // TODO Call errorHandler to avoid if here
 
-        res.send(apiService.success(recipes));
+        res.send(apiHeaderService.success(recipes));
       });
     })
     /**
@@ -62,7 +64,7 @@ module.exports = function (app) {
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
-        return res.send(apiService.inappropriateData(errors.mapped()));
+        return res.send(apiHeaderService.inappropriateData(errors.mapped()));
       }
 
       res.send({type: 'ok'});
@@ -106,6 +108,7 @@ module.exports = function (app) {
             ]
           },
           function (err, recipe) {
+            errorHandlerService.controlException(res, err);
 
           if (!recipe) {
             return res.send(apiService.resourceNotFound());
@@ -134,19 +137,26 @@ module.exports = function (app) {
 
       RecipeLike.findOne({
         where: {
-          recipeId: 'John',
-          profileId: 1
+          profileId: req.accessToken.userId,
+          recipeId: recipeId
+        }
+      }, function (err, like) {
+        errorHandlerService.controlException(res, err);
+
+        if (like) {
+          return res.send(apiHeaderService.logicalError('You already liked this recipe!'));
+        }
+        else {
+          RecipeLike.create({
+            profileId: req.accessToken.userId,
+            recipeId: recipeId
+          }, function (err) {
+            errorHandlerService.controlException(res, err);
+
+            return res.status(200).json(apiHeaderService.success())
+          });
         }
       });
-
-      RecipeLike.create({
-        profileId: 1,
-        recipeId: recipeId
-      }, function (err) {
-        /**/
-      });
-
-      res.send('MEW');
     });
 
 };

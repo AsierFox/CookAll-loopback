@@ -5,15 +5,22 @@ module.exports = {
   malformedParameters: malformedParameters,
   inappropriateData: inappropriateData,
   resourceNotFound: resourceNotFound,
-  loginError: loginError
+  logicalError: logicalError,
+  authError: authError,
+  serverError: serverError
 };
 
 function success(data) {
-  return {
+  let res = {
     code: 200,
-    status: 'OK',
-    data: data
+    status: 'OK'
   };
+
+  if (data) {
+    res.data = data;
+  }
+
+  return res;
 }
 
 function malformedParameters() {
@@ -38,10 +45,24 @@ function resourceNotFound() {
   };
 }
 
-function loginError() {
+function logicalError(errorMessage) {
+  return {
+    code: 409,
+    status: 'Conflict',
+    message: errorMessage
+  };
+}
+
+function authError() {
   return {
     code: 401,
-    status: 'Unauthorized',
-    error: 'Bad credentials'
+    status: 'Unauthorized'
+  };
+}
+
+function serverError(res) {
+  return {
+    code: 500,
+    status: 'Internal Server Error'
   };
 }
