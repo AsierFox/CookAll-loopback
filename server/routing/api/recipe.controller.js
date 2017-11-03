@@ -2,7 +2,8 @@
 
 const { check, validationResult } = require('express-validator/check');
 
-let apiService = require('./../../services/api.service');
+const authMiddleware = require('./../../middlewares/auth.middleware');
+const apiService = require('./../../services/api.service');
 
 module.exports = function (app) {
 
@@ -12,7 +13,7 @@ module.exports = function (app) {
     /**
      * Get all recipes.
      */
-    .get(function (req, res) {
+    .get(authMiddleware.ensureAuth, function (req, res) {
 
       // TODO Add pagination
 

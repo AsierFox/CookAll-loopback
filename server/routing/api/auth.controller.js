@@ -24,9 +24,7 @@ module.exports = function (app) {
           return res.send(apiService.loginError());
         }
 
-        let response = apiService.loginError(userAuth);
-
-        return res.send(apiService.success(response));
+        return res.send(apiService.success(userAuth));
       });
     });
 
