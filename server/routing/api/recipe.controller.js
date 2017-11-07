@@ -45,9 +45,7 @@ module.exports = function (app) {
         ],
         order: 'createdAt ASC'
       }, function (err, recipes) {
-        errorHandlerService.controlException(res, err);
-
-        // TODO Call errorHandler to avoid if here
+        if (err) return errorHandlerService.controlException(res, err);
 
         res.send(apiHeaderService.success(recipes));
       });
@@ -108,54 +106,107 @@ module.exports = function (app) {
             ]
           },
           function (err, recipe) {
-            errorHandlerService.controlException(res, err);
+            if (err) return errorHandlerService.controlException(res, err);
 
           if (!recipe) {
-            return res.send(apiService.resourceNotFound());
+            return res.send(apiHeaderService.resourceNotFound());
           }
 
-          res.send(apiService.success(recipe));
+          res.send(apiHeaderService.success(recipe));
         });
       });
 
-  app.post('/recipes/:recipeId/like', [
+  app.post('/recipes/:recipeId/like', authMiddleware.ensureAuth, [
       check('recipeId')
         .exists()
         .matches(/^\d+$/) // A Number
         .toInt()
     ], function (req, res) {
 
-      // TODO add middleware for user
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.send(apiHeaderService.inappropriateData(errors.mapped()));
+      }
+      
+      const recipeId = req.params.recipeId;
+      // Check if the recipe is of the user
+      Recipe.findOne({
+        where: {
+          profileId: req.accessToken.userId,
+          id: recipeId
+        }
+      }, function (err, recipe) {
+        if (err) return errorHandlerService.controlException(res, err);
+
+        if (recipe) {
+          return res.send(apiHeaderService.logicalError('You can not like your own recipe!'));
+        }
+
+        // Check if has liked the recipe
+        RecipeLike.findOne({
+          where: {
+            profileId: req.accessToken.userId,
+            recipeId: recipeId
+          }
+        }, function (err, like) {
+          if (err) return errorHandlerService.controlException(res, err);
+
+          if (like) {
+            return res.send(apiHeaderService.logicalError('You have already liked this recipe!'));
+          }
+          else {
+            RecipeLike.create({
+              profileId: req.accessToken.userId,
+              recipeId: recipeId
+            }, function (err) {
+              if (err) return errorHandlerService.controlException(res, err);
+
+              return res.status(200).json(apiHeaderService.success());
+            });
+          }
+        });
+      });
+    });
+
+    app.post('/recipes/:recipeId/dislike', authMiddleware.ensureAuth, [
+      check('recipeId')
+        .exists()
+        .matches(/^\d+$/) // A Number
+        .toInt()
+    ], function (req, res) {
 
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
-        return res.send(apiService.inappropriateData(errors.mapped()));
+        return res.send(apiHeaderService.inappropriateData(errors.mapped()));
       }
-      
+
       const recipeId = req.params.recipeId;
 
-      RecipeLike.findOne({
+      // Check if the recipe is of the user
+      Recipe.findOne({
         where: {
           profileId: req.accessToken.userId,
+          id: recipeId
+        }
+      }, function (err, recipe) {
+        if (err) return errorHandlerService.controlException(res, err);
+
+        if (recipe) {
+          return res.send(apiHeaderService.logicalError('You can not like your own recipe!'));
+        }
+
+        // Check if has liked the recipe
+        RecipeLike.destroyAll({
+          profileId: req.accessToken.userId,
           recipeId: recipeId
-        }
-      }, function (err, like) {
-        errorHandlerService.controlException(res, err);
-
-        if (like) {
-          return res.send(apiHeaderService.logicalError('You already liked this recipe!'));
-        }
-        else {
-          RecipeLike.create({
-            profileId: req.accessToken.userId,
-            recipeId: recipeId
-          }, function (err) {
-            errorHandlerService.controlException(res, err);
-
-            return res.status(200).json(apiHeaderService.success());
-          });
-        }
+        })
+        .then(function (err) {
+          if (err) return errorHandlerService.controlException(res, err);
+  
+          return res.status(200).json(apiHeaderService.success());
+        });
       });
     });
 

@@ -56,7 +56,7 @@ function logicalError(errorMessage) {
 function authError() {
   return {
     code: 401,
-    status: 'Unauthorized'
+    status: 'Unauthorized',
   };
 }
 

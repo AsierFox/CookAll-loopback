@@ -54,7 +54,7 @@ boot(app, __dirname, function(err) {
     level: 'verbose',
     transports: [
       new (winston.transports.Console)(),
-      new (winston.transports.File)({ filename: 'logs/logs.log' })
+      new (winston.transports.File)({ filename: '/logs/logs.log' })
     ]
   });
 

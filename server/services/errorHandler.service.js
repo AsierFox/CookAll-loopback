@@ -14,8 +14,7 @@ function printError(error, tag) {
 }
 
 function controlException(res, err) {
-  if (err) {
-    // TODO log error
-    return res.status(500).json(apiService.serverError());
-  }
+  // TODO log error
+  console.log('[ERROR] errorHandler - controlException: ', err);
+  return res.status(500).json(apiHeaderService.serverError());
 }

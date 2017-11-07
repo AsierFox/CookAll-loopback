@@ -1,6 +1,5 @@
 'use strict';
 
-let errorHandlerService = require('./../../services/errorHandler.service');
 let apiHeaderService = require('./../../services/apiHeader.service');
 
 module.exports = function (app) {

@@ -8,7 +8,7 @@ module.exports = {
 
 function ensureAuth(req, res, next) {
     if (!req.accessToken) {
-        return res.status().json(apiHeaderService.authError());
+        return res.status(401).json(apiHeaderService.authError());
     }
     next();
 }
