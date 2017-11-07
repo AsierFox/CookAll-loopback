@@ -111,10 +111,10 @@ module.exports = function (app) {
             errorHandlerService.controlException(res, err);
 
           if (!recipe) {
-            return res.send(apiService.resourceNotFound());
+            return res.send(apiHeaderService.resourceNotFound());
           }
 
-          res.send(apiService.success(recipe));
+          res.send(apiHeaderService.success(recipe));
         });
       });
 
@@ -130,9 +130,9 @@ module.exports = function (app) {
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
-        return res.send(apiService.inappropriateData(errors.mapped()));
+        return res.send(apiHeaderService.inappropriateData(errors.mapped()));
       }
-      
+
       const recipeId = req.params.recipeId;
 
       RecipeLike.findOne({
