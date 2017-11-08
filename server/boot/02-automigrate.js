@@ -6,7 +6,7 @@ let errorHandlerService = require('./../services/errorHandler.service');
 
 module.exports = function (app) {
 
-  let resetDB = true;
+  let resetDB = false;
   let seedDB = true;
 
   let Profile = app.models.Profile;
