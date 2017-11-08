@@ -70,7 +70,7 @@ module.exports = function (app) {
 
     app.route('/recipes/:recipeId')
       /**
-       * Get recipe detal.
+       * Get recipe detail.
        */
       .get(function (req, res) {
         let recipeId = req.params.recipeId;
@@ -116,6 +116,9 @@ module.exports = function (app) {
         });
       });
 
+  /**
+   * Like a recipe.
+   */
   app.post('/recipes/:recipeId/like', authMiddleware.ensureAuth, [
       check('recipeId')
         .exists()
@@ -130,6 +133,7 @@ module.exports = function (app) {
       }
       
       const recipeId = req.params.recipeId;
+      
       // Check if the recipe is of the user
       Recipe.findOne({
         where: {
@@ -169,7 +173,10 @@ module.exports = function (app) {
       });
     });
 
-    app.post('/recipes/:recipeId/dislike', authMiddleware.ensureAuth, [
+  /**
+   * Dislike a recipe.
+   */
+  app.post('/recipes/:recipeId/dislike', authMiddleware.ensureAuth, [
       check('recipeId')
         .exists()
         .matches(/^\d+$/) // A Number
