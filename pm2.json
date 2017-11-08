@@ -12,10 +12,10 @@
       "error_file": "./logs/app-error.log",
       "out_file": "./logs/app-out.log",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "dev"
       },
       "env_production": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "prod"
       }
     }
   ]

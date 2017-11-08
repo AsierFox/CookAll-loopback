@@ -7,9 +7,11 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "nodemon .",
-    "posttest": "npm run lint && nsp check",
-    "test": "mocha"
+    "local": "cross-env NODE_ENV=local nodemon .",
+    "dev": "cross-env NODE_ENV=dev nodemon .",
+    "prod": "cross-env NODE_ENV=prod pm2 start pm2.json",
+    "test": "cross-env NODE_ENV=test mocha",
+    "posttest": "echo 'Tests finished'"
   },
   "dependencies": {
     "async": "^2.5.0",
@@ -32,6 +34,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
+    "cross-env": "^5.1.1",
     "eslint": "^3.17.1",
     "eslint-config-loopback": "^8.0.0",
     "mocha": "^4.0.1",
