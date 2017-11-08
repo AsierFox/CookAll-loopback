@@ -8,8 +8,6 @@ module.exports = function (app) {
 
   const migrate = app.get('automigrate');
 
-  console.log('MEW', migrate);
-
   let Profile = app.models.Profile;
   let Recipe = app.models.Recipe;
   let RecipeCategory = app.models.RecipeCategory;

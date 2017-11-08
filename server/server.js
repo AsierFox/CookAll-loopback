@@ -58,7 +58,7 @@ boot(app, __dirname, function(err) {
     ]
   });
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'prod') {
     logger.remove(winston.transports.Console);
   }
 
