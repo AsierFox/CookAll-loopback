@@ -131,7 +131,7 @@ module.exports = function (app) {
       if (!errors.isEmpty()) {
         return res.send(apiHeaderService.inappropriateData(errors.mapped()));
       }
-      
+
       const recipeId = req.params.recipeId;
       
       // Check if the recipe is of the user
