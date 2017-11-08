@@ -2,6 +2,7 @@
   "name": "Recipe",
   "plural": "recipes",
   "base": "PersistedModel",
+  "description": "This model contains the information of a recipe.",
   "idInjection": true,
   "options": {
     "validateUpsert": true
