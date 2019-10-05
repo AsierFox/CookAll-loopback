@@ -1,3 +1,5 @@
 {
-  "generator-loopback": {}
+  "@loopback/cli": {
+    "version": "1.23.1"
+  }
 }
