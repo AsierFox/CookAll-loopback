@@ -1,4 +1,4 @@
-import {CookAllApplication} from '../..';
+import {CookallApiApplication} from '../..';
 import {
   createRestAppClient,
   givenHttpServerConfig,
@@ -14,7 +14,7 @@ export async function setupApplication(): Promise<AppWithClient> {
     // port: +process.env.PORT,
   });
 
-  const app = new CookAllApplication({
+  const app = new CookallApiApplication({
     rest: restConfig,
   });
 
@@ -27,6 +27,6 @@ export async function setupApplication(): Promise<AppWithClient> {
 }
 
 export interface AppWithClient {
-  app: CookAllApplication;
+  app: CookallApiApplication;
   client: Client;
 }

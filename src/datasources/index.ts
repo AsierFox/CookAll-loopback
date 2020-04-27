@@ -1,1 +1,1 @@
-export * from './maindb.datasource';
+export * from './local.datasource';

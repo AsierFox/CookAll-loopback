@@ -1,10 +1,10 @@
-import {CookAllApplication} from './application';
+import {CookallApiApplication} from './application';
 import {ApplicationConfig} from '@loopback/core';
 
-export {CookAllApplication};
+export {CookallApiApplication};
 
 export async function main(options: ApplicationConfig = {}) {
-  const app = new CookAllApplication(options);
+  const app = new CookallApiApplication(options);
   await app.boot();
   await app.start();
 

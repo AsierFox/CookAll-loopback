@@ -1,10 +1,10 @@
-import {CookAllApplication} from './application';
+import {CookallApiApplication} from './application';
 
 export async function migrate(args: string[]) {
   const existingSchema = args.includes('--rebuild') ? 'drop' : 'alter';
   console.log('Migrating schemas (%s existing schema)', existingSchema);
 
-  const app = new CookAllApplication();
+  const app = new CookallApiApplication();
   await app.boot();
   await app.migrateSchema({existingSchema});
 
